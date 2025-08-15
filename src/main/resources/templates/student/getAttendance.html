@@ -1,0 +1,242 @@
+<!--<div th:replace="~{header :: header}">...</div>-->
+
+<!doctype html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org/">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>University Management System</title>
+  <link rel="shortcut icon" type="image/png" href="/assets/images/logos/logo.png" />
+  <link rel="stylesheet" href="/assets/css/styles.min.css" />
+
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" integrity="sha512-dTfge/zgoMYpP7QbHy4gWMEGsbsdZeCXz7irItjcC3sPUFtf0kuFbDz/ixG7ArTxmDjLXDmezHubeNikyKGVyQ==" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+        integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+  <style>
+
+
+    .inputstl {
+width: 100%;
+         padding: 9px;
+
+         border: solid 1px #460023;
+
+         outline: 0;
+
+         background: -webkit-gradient(linear, left top, left 25, from(#FFFFFF), color-stop(4%, #FFCEE7), to(#FFFFFF));
+
+         background: -moz-linear-gradient(top, #FFFFFF, #FFCEE7 1px, #FFFFFF 25px);
+
+         box-shadow: rgba(0,0,0, 0.1) 0px 0px 8px;
+
+         -moz-box-shadow: rgba(0,0,0, 0.1) 0px 0px 8px;
+
+         -webkit-box-shadow: rgba(0,0,0, 0.1) 0px 0px 8px;
+
+
+
+
+         }
+
+<!--    html,-->
+<!--body,-->
+<!--.intro {-->
+<!--  height: 100%;-->
+<!--}-->
+
+.gradient-custom-2 {
+  /* fallback for old browsers */
+<!--  background: #6a11cb;-->
+
+  /* Chrome 10-25, Safari 5.1-6 */
+<!--  background: -webkit-linear-gradient(to top, rgba(106, 17, 203, 1), rgba(37, 117, 252, 1));-->
+
+  /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+<!--  background: linear-gradient(to top, rgba(106, 17, 203, 1), rgba(37, 117, 252, 1))-->
+}
+
+table td,
+table th {
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+
+    html,
+body,
+.intro {
+  height: 100%;
+}
+
+table td,
+table th {
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+thead th {
+  color: #fff;
+}
+
+.card {
+  border-radius: .5rem;
+}
+
+.table-scroll {
+  border-radius: .5rem;
+}
+
+.table-scroll table thead th {
+  font-size: 1.25rem;
+}
+thead {
+  top: 0;
+  position: sticky;
+}
+
+  </style>
+
+</head>
+
+<body>
+
+
+
+
+<!--  Body Wrapper -->
+<div class="page-wrapper" id="main-wrapper" data-layout="vertical" data-navbarbg="skin6" data-sidebartype="full"
+     data-sidebar-position="fixed" data-header-position="fixed">
+
+
+
+
+  <div th:insert="student/header">...</div>
+
+
+  <!--  Sidebar End -->
+  <!--  Main wrapper -->
+  <div class="body-wrapper">
+    <div class="body-wrapper-inner">
+      <div class="container-fluid">
+        <!--  Row 1 -->
+
+        <a class="btn btn-primary" th:object="${attendances}" th:href="@{'/teacher/getLesson?courseCode='+${attendances[0].enrolledCourse.course.code}}" role="button">Back</a>
+        <section class="intro" th:object="${attendances}">
+
+
+
+          <h3 class="text-center"><i>Attendance Sheet<br> Course Name = <span th:text="${attendances[0].enrolledCourse.course.name}"></span>(<span th:text="${attendances[0].enrolledCourse.course.code}"></span>) Lesson Name=<span th:text="${attendances[0].lesson.name}"></span>(LessonId <span th:text="${attendances[0].lesson.id}"></span>)</i></h3>
+
+          <div class="bg-image h-100" style="background-color: #f5f7fa;" >
+            <div class="mask d-flex align-items-center h-100">
+              <div class="container">
+                <div class="row justify-content-center">
+                  <div class="col-12">
+                    <div class="card">
+                      <div class="card-body p-0">
+                        <div class="table-responsive table-scroll" data-mdb-perfect-scrollbar="true" style="position: relative; height: 700px">
+
+
+
+                          <table class="table table-striped mb-0">
+                            <thead style="background-color: #002d72;">
+                            <tr>
+                              <th scope="col">Serial</th>
+                              <th scope="col">Student Id</th>
+                              <th scope="col">Lesson Name</th>
+                              <th scope="col">Lesson Details</th>
+                              <th scope="col">Attendance Taker</th>
+                              <th scope="col">Attendance Date</th>
+                              <th scope="col">Attendance Current Status</th>
+                              <th scope="col">Click to Change Attendance Action</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr th:each="attendance,index : ${attendances}">
+                              <td th:text="${index.count}">
+                              <td th:text="${attendance.enrolledCourse.student.id}">
+                              <td th:text="${attendance.lesson.name}">
+                              <td th:text="${attendance.lesson.description}">
+                              <td th:text="${attendance.attendanceTaker!=null?attendance.attendanceTaker: 'unmarked'}">
+                              <td th:text="${attendance.updatedAt!=null?#temporals.format(attendance.updatedAt, 'yyyy-MM-dd'): 'unmarked'}">
+                              <td th:if="${attendance.presentStatus ==null}"><button type="button" class="btn btn-primary" disabled th:text="unmarked"></button>
+                              <td th:if="${attendance.presentStatus ==1}"><button type="button" class="btn btn-success" disabled th:text="present"></button>
+                              <td th:if="${attendance.presentStatus ==2}"><button type="button" class="btn btn-danger" disabled th:text="absent"></button>
+
+
+                              <td><form th:action="@{'/teacher/lesson/getAttendance/change?attendanceId='+ ${attendance.id}+'&&presentStatus=1'}" method="post"><button type="submit" class="btn btn-success">Present</button></form>
+                              <form th:action="@{'/teacher/lesson/getAttendance/change?attendanceId='+ ${attendance.id}+'&&presentStatus=2'}" method="post"><button type="submit" class="btn btn-danger">Absent</button></form>
+                              </td>
+
+                            </tr>
+                            </tbody>
+                          </table>
+
+
+
+
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+
+        <!-- Button trigger modal -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        <!--   row 1-->
+
+        <!-- footer start -->
+
+
+
+
+        <!-- footer end -->
+
+      </div>
+    </div>
+  </div>
+</div>
+
+<div th:insert="student/footer">...</div>
+
+<script src="/assets/libs/jquery/dist/jquery.min.js"></script>
+<script src="/assets/libs/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+<script src="/assets/js/sidebarmenu.js"></script>
+<script src="/assets/js/app.min.js"></script>
+<script src="/assets/libs/apexcharts/dist/apexcharts.min.js"></script>
+<script src="/assets/libs/simplebar/dist/simplebar.js"></script>
+<script src="/assets/js/dashboard.js"></script>
+<!--<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js" integrity="sha384-ndDqU0Gzau9qJ1lfW4pNLlhNTkCfHzAVBReH9diLvGRem5+R9g2FzA8ZGN954O5Q" crossorigin="anonymous"></script>-->
+<!-- solar icons -->
+<script src="https://cdn.jsdelivr.net/npm/iconify-icon@1.0.8/dist/iconify-icon.min.js"></script>
+</body>
+
+</html>

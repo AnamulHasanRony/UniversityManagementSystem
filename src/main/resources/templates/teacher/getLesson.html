@@ -1,0 +1,325 @@
+<!--<div th:replace="~{header :: header}">...</div>-->
+
+<!doctype html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org/">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>University Management System</title>
+  <link rel="shortcut icon" type="image/png" href="/assets/images/logos/logo.png" />
+  <link rel="stylesheet" href="/assets/css/styles.min.css" />
+
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" integrity="sha512-dTfge/zgoMYpP7QbHy4gWMEGsbsdZeCXz7irItjcC3sPUFtf0kuFbDz/ixG7ArTxmDjLXDmezHubeNikyKGVyQ==" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+        integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <!--    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-LN+7fdVzj6u52u30Kp6M/trliBMCMKTyK833zpbD+pXdCLuTusPj697FH4R/5mcr" crossorigin="anonymous">-->
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+  <style>
+
+
+    .inputstl {
+width: 100%;
+         padding: 9px;
+
+         border: solid 1px #460023;
+
+         outline: 0;
+
+         background: -webkit-gradient(linear, left top, left 25, from(#FFFFFF), color-stop(4%, #FFCEE7), to(#FFFFFF));
+
+         background: -moz-linear-gradient(top, #FFFFFF, #FFCEE7 1px, #FFFFFF 25px);
+
+         box-shadow: rgba(0,0,0, 0.1) 0px 0px 8px;
+
+         -moz-box-shadow: rgba(0,0,0, 0.1) 0px 0px 8px;
+
+         -webkit-box-shadow: rgba(0,0,0, 0.1) 0px 0px 8px;
+
+
+
+
+         }
+
+<!--    html,-->
+<!--body,-->
+<!--.intro {-->
+<!--  height: 100%;-->
+<!--}-->
+
+.gradient-custom-2 {
+  /* fallback for old browsers */
+<!--  background: #6a11cb;-->
+
+  /* Chrome 10-25, Safari 5.1-6 */
+<!--  background: -webkit-linear-gradient(to top, rgba(106, 17, 203, 1), rgba(37, 117, 252, 1));-->
+
+  /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+<!--  background: linear-gradient(to top, rgba(106, 17, 203, 1), rgba(37, 117, 252, 1))-->
+}
+
+table td,
+table th {
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+
+    html,
+body,
+.intro {
+  height: 100%;
+}
+
+table td,
+table th {
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+thead th {
+  color: #fff;
+}
+
+.card {
+  border-radius: .5rem;
+}
+
+.table-scroll {
+  border-radius: .5rem;
+}
+
+.table-scroll table thead th {
+  font-size: 1.25rem;
+}
+thead {
+  top: 0;
+  position: sticky;
+}
+
+  </style>
+
+</head>
+
+<body>
+
+
+
+
+<!--  Body Wrapper -->
+<div class="page-wrapper" id="main-wrapper" data-layout="vertical" data-navbarbg="skin6" data-sidebartype="full"
+     data-sidebar-position="fixed" data-header-position="fixed">
+
+
+
+
+  <div th:insert="teacher/header">...</div>
+
+
+  <!--  Sidebar End -->
+  <!--  Main wrapper -->
+  <div class="body-wrapper">
+    <div class="body-wrapper-inner">
+      <div class="container-fluid">
+        <!--  Row 1 -->
+
+        <section class="intro" th:object="${course}">
+          <h3 class="text-center"> <a class="btn btn-primary" th:href="@{/teacher/getCourseList}" role="button">Back</a>
+            <i><b>  Course Name = <span th:text="${course.name}"></span>(<span th:text="${course.code}"></span>)</b></i></h3>
+
+          <!-- Heading -->
+          <div class="container">
+
+            <div class="col-md-6">
+
+            <h3 class="text-center">Lesson Creation Form</h3>
+
+
+            <ul>
+              <li class="alert alert-danger" role="alert" th:if="${!#strings.isEmpty(errorMessage)}"
+                  th:text="${errorMessage}"> </li>
+              <li class="alert alert-success" role="alert" th:if="${!#strings.isEmpty(successMessage)}"
+                  th:text="${successMessage}"> </li>
+            </ul>
+            <form th:action="@{'/teacher/lesson/create?courseCode='+${course.code}}"  method="post"  th:object="${newLesson}"  class="form-horizontal" role="form">
+
+              <div class="form-group">
+                <label for="name1" class="col-sm-2 control-label">Lesson Name:</label>
+                <div class="col-sm-4">
+                  <input type="text"  class="form-control inputstl w-100" th:field="*{name}" id="name1" placeholder="Enter Lesson Name">
+                </div>
+              </div>
+
+
+              <div class="form-group">
+                <label for="id" class="col-sm-2 control-label">Lesson Details:</label>
+                <div class="col-sm-4">
+                  <input type="text" class="form-control inputstl" id="id" placeholder="Enter Lesson Details" th:field="*{description}">
+                </div>
+              </div>
+
+              <div class="form-group">
+                <div class="col-sm-offset-2 col-sm-4">
+                  <button type="submit" class="btn btn-lg btn-block btn-primary">Add Lesson</button>
+                </div>
+              </div>
+            </form>
+          </div>
+
+
+
+<!--             Update Lesson -->
+          <div class="col-md-6">
+            <ul>
+              <li class="alert alert-danger" role="alert" th:if="${!#strings.isEmpty(updateErrorMessage)}"
+                  th:text="${updateErrorMessage}"> </li>
+
+            </ul>
+
+            <h3 class="text-center">Lesson Update Form</h3>
+
+
+            <form th:action="@{'/teacher/lesson/update?courseCode='+${course.code}}"  method="post"  th:object="${updateLesson}"  class="form-horizontal" role="form">
+
+              <div class="form-group">
+                <label for="lessonId" class="col-sm-2 control-label">Lesson Id:</label>
+                <div class="col-sm-4">
+                  <input type="text"  class="form-control inputstl" th:field="*{id}" id="lessonId" placeholder="Enter Lesson Id">
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="name" class="col-sm-2 control-label">Lesson Name:</label>
+                <div class="col-sm-4">
+                  <input type="text"  class="form-control inputstl" th:field="*{name}" id="name" placeholder="Enter Lesson Name">
+                </div>
+              </div>
+
+
+              <div class="form-group">
+                <label for="description" class="col-sm-2 control-label">Lesson Details:</label>
+                <div class="col-sm-4">
+                  <input type="text" class="form-control inputstl" id="description" placeholder="Enter Lesson Details" th:field="*{description}">
+                </div>
+              </div>
+
+              <div class="form-group">
+                <div class="col-sm-offset-2 col-sm-4">
+                  <button type="submit" class="btn btn-lg btn-block btn-primary">Update Lesson</button>
+                </div>
+              </div>
+            </form>
+          </div>
+
+            </div>
+
+
+          <h1 class="text-center">Lesson List</h1>
+
+          <!-- end of table for student details -->
+          <div class="bg-image h-100" style="background-color: #f5f7fa;" >
+            <div class="mask d-flex align-items-center h-100">
+              <div class="container">
+                <div class="row justify-content-center">
+                  <div class="col-12">
+                    <div class="card">
+                      <div class="card-body p-0">
+                        <div class="table-responsive table-scroll" data-mdb-perfect-scrollbar="true" style="position: relative; height: 700px">
+
+
+
+                          <table class="table table-striped mb-0">
+                            <thead style="background-color: #002d72;">
+                            <tr>
+                              <th scope="col">Lesson Serial</th>
+                              <th scope="col">Lesson Id</th>
+                              <th scope="col">Lesson Name</th>
+                              <th scope="col">Lesson Details</th>
+                              <th scope="col">Lesson Created At</th>
+                              <th scope="col">Lesson Created By</th>
+                              <th scope="col">View Attendance</th>
+                              <th scope="col">Delete lesson</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr th:each="lesson,index : ${lessons}">
+                              <td th:text="${index.count}">
+                              <td th:text="${lesson.id}">
+                              <td th:text="${lesson.name}">
+                              <td th:text="${lesson.description}">
+                              <td th:text="${#temporals.format(lesson.createdAt, 'yyyy-MM-dd')}"></td>
+                              <td th:text="${lesson.createdBy}">
+                              <td><a th:href="@{'/teacher/lesson/getAttendance?lessonId='+ ${lesson.id}}"><button type="submit" class="btn btn-success">View Attendance</button></a>
+                              <td><form th:action="@{'/teacher/lesson/delete?courseCode=' +${course.code}+'&&lessonId='+${lesson.id}}" method="post"><button type="submit" class="btn btn-danger">Delete Lesson</button></form>
+
+                              </td>
+
+                            </tr>
+                            </tbody>
+                          </table>
+
+
+
+
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+
+        <!-- Button trigger modal -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        <!--   row 1-->
+
+        <!-- footer start -->
+
+
+
+
+        <!-- footer end -->
+
+      </div>
+    </div>
+  </div>
+</div>
+
+<div th:insert="teacher/footer">...</div>
+
+<script src="/assets/libs/jquery/dist/jquery.min.js"></script>
+<script src="/assets/libs/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+<script src="/assets/js/sidebarmenu.js"></script>
+<script src="/assets/js/app.min.js"></script>
+<script src="/assets/libs/apexcharts/dist/apexcharts.min.js"></script>
+<script src="/assets/libs/simplebar/dist/simplebar.js"></script>
+<script src="/assets/js/dashboard.js"></script>
+<!--<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js" integrity="sha384-ndDqU0Gzau9qJ1lfW4pNLlhNTkCfHzAVBReH9diLvGRem5+R9g2FzA8ZGN954O5Q" crossorigin="anonymous"></script>-->
+<!-- solar icons -->
+<script src="https://cdn.jsdelivr.net/npm/iconify-icon@1.0.8/dist/iconify-icon.min.js"></script>
+</body>
+
+</html>

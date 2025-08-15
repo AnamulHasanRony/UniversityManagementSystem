@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org/">
+
+<head>
+
+
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>University Management System</title>
+  <link rel="shortcut icon" type="image/png" href="assets/images/logos/logo.png" />
+  <link rel="stylesheet" href="assets/css/styles.min.css" />
+
+  <style>
+    .hero-image {
+  background-image: url("assets/images/backgrounds/school.jpg");
+  background-color: #cccccc;
+  height: 500px;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: relative;
+
+}
+  </style>
+</head>
+
+<body >
+
+
+
+  <!--  Body Wrapper -->
+
+  <div  class="page-wrapper hero-image" id="main-wrapper" data-layout="vertical" data-navbarbg="skin6" data-sidebartype="full"
+    data-sidebar-position="fixed" data-header-position="fixed">
+
+    <div
+      class="position-relative overflow-hidden text-bg-light min-vh-100 d-flex align-items-center justify-content-center p-3 mb-2 bg-dark hero-image">
+
+      <div class="d-flex align-items-center justify-content-center w-100" >
+        <div class="row justify-content-center w-100" >
+          <div class="col-md-8 col-lg-6 col-xxl-3">
+            <div class="card mb-0">
+              <div class="card-body">
+
+                <a href="../admin/student/create.html" class="text-nowrap logo-img text-center d-block py-3 w-100">
+                  <img src="assets/images/logos/logo.png"  width="100" height="100" alt="">
+                </a>
+                <p class="text-center text-primary fw-bold"><b>University Management System/b></p>
+                <form th:action="@{/login}"  method="post">
+                  <div class="mb-3">
+                    <label for="exampleInputEmail1" class="form-label text-primary fw-bold">username(For Student : student_id
+                    For Teacher: teacher_id
+                    For Admin: admin)</label>
+                    <input type="text" class="form-control text-primary fw-bold" id="exampleInputEmail1" aria-describedby="emailHelp" name="username">
+                  </div>
+                  <div class="mb-4">
+                    <label for="exampleInputPassword1" class="form-label text-primary fw-bold">Password</label>
+                    <input type="password" class="form-control text-primary fw-bold" id="exampleInputPassword1" name="password">
+                  </div>
+                  <button type="submit" class="btn btn-lg btn-block btn-primary">Log In</button>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+  <script src="assets/libs/jquery/dist/jquery.min.js"></script>
+  <script src="assets/libs/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+  <!-- solar icons -->
+  <script src="https://cdn.jsdelivr.net/npm/iconify-icon@1.0.8/dist/iconify-icon.min.js"></script>
+
+
+
+
+
+</body>
+
+</html>

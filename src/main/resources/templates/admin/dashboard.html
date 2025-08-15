@@ -1,0 +1,251 @@
+<!--<div th:replace="~{header :: header}">...</div>-->
+
+<!doctype html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org/" xmlns="http://www.w3.org/1999/html">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>University Management System</title>
+    <link rel="shortcut icon" type="image/png" href="/assets/images/logos/logo.png" />
+    <link rel="stylesheet" href="/assets/css/styles.min.css" />
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" integrity="sha512-dTfge/zgoMYpP7QbHy4gWMEGsbsdZeCXz7irItjcC3sPUFtf0kuFbDz/ixG7ArTxmDjLXDmezHubeNikyKGVyQ==" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+          integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A=="
+          crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+    <style>
+
+        .inputstl {
+        padding: 9px;
+        border: solid 1px #460023;
+        outline: 0;
+        background: -webkit-gradient(linear, left top, left 25, from(#FFFFFF), color-stop(4%, #FFCEE7), to(#FFFFFF));
+        background: -moz-linear-gradient(top, #FFFFFF, #FFCEE7 1px, #FFFFFF 25px);
+        box-shadow: rgba(0,0,0, 0.1) 0px 0px 8px;
+        -moz-box-shadow: rgba(0,0,0, 0.1) 0px 0px 8px;
+        -webkit-box-shadow: rgba(0,0,0, 0.1) 0px 0px 8px;
+        }
+            body{
+                margin-top:20px;
+                background:#FAFAFA;
+                }
+                .order-card {
+                color: #fff;
+                }
+
+                .bg-c-blue {
+                background: linear-gradient(45deg,#4099ff,#73b4ff);
+                }
+
+                .bg-c-green {
+                background: linear-gradient(45deg,#2ed8b6,#59e0c5);
+                }
+
+                .bg-c-yellow {
+                background: linear-gradient(45deg,#FFB64D,#ffcb80);
+                }
+
+                .bg-c-pink {
+                background: linear-gradient(45deg,#FF5370,#ff869a);
+                }
+
+                .bg-c-purple {
+                    background: linear-gradient(45deg, #9b59b6, #be79d1);
+                }
+
+                .bg-c-orange {
+                    background: linear-gradient(45deg, #ff7e5f, #feb47b);
+                }
+
+                .bg-c-teal {
+                    background: linear-gradient(45deg, #1abc9c, #48c9b0);
+                }
+
+                .bg-c-red {
+                    background: linear-gradient(45deg, #e74c3c, #ff7675);
+                }
+
+                .bg-c-indigo {
+                    background: linear-gradient(45deg, #3f51b5, #5c6bc0);
+                }
+
+                .bg-c-gray {
+                    background: linear-gradient(45deg, #95a5a6, #bdc3c7);
+                }
+
+
+
+                .card {
+                border-radius: 5px;
+                -webkit-box-shadow: 0 1px 2.94px 0.06px rgba(4,26,55,0.16);
+                box-shadow: 0 1px 2.94px 0.06px rgba(4,26,55,0.16);
+                border: none;
+                margin-bottom: 30px;
+                -webkit-transition: all 0.3s ease-in-out;
+                transition: all 0.3s ease-in-out;
+                }
+
+                .card .card-block {
+                padding: 25px;
+                }
+
+                .order-card i {
+                font-size: 26px;
+                }
+
+                .f-left {
+                float: left;
+                }
+
+                .f-right {
+                float: right;
+                }
+
+        .card:hover {
+  /* Scale the card to 1.1 times its original size (10% increase) */
+  transform: scale(1.1);
+  /* Optional: Add a subtle shadow for depth */
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.8);
+}
+    </style>
+
+</head>
+
+<body>
+
+
+
+
+<!--  Body Wrapper -->
+<div class="page-wrapper" id="main-wrapper" data-layout="vertical" data-navbarbg="skin6" data-sidebartype="full"
+     data-sidebar-position="fixed" data-header-position="fixed">
+
+
+    <div th:insert="header">...</div>
+
+
+<!--  main Body wrapper-->
+    <div class="body-wrapper">
+        <div class="body-wrapper-inner">
+            <div class="container-fluid">
+
+                <h2 class="text-center"><b>Admin Dashboard</b></h2>
+                <hr class="mx-auto" style="width: 800px; border: 5px solid #002d72;">
+                <!--  Row 1 -->
+                        <a th:href="@{/admin/department/dashboard}">
+                        <div class="col-md-4 col-xl-3">
+                            <div class="card bg-c-blue order-card">
+                                <div class="card-block">
+                                    <h2 class="m-b-15" th:text="${departmentCount}">0</h2>
+                                    <h2 class="m-b-15" > Departments Management <i class="fa-solid fa-building f-right"></i></h2>
+                                    <p class="m-b-0">Click to manage departments</p>
+                                </div>
+                            </div>
+                        </div>
+                        </a>
+
+                        <a th:href="@{/admin/teacher/dashboard}">
+                        <div class="col-md-4 col-xl-3">
+                            <div class="card bg-c-pink order-card">
+                                <div class="card-block">
+                                    <h2 class="m-b-15" th:text="${teacherCount}">0</h2>
+                                    <h2 class="m-b-15" > Teachers Management <i class="fa-solid fa-person-chalkboard f-right"></i></h2>
+                                    <p class="m-b-0">Click to manage teachers</p>
+                                </div>
+                            </div>
+                        </div>
+                        </a>
+
+
+                       <a th:href="@{/admin/student/dashboard}">
+                        <div class="col-md-4 col-xl-3">
+                            <div class="card bg-c-green order-card">
+                                <div class="card-block">
+                                    <h2 class="m-b-15" th:text="${studentCount}">0</h2>
+                                    <h2 class="m-b-15" > Students Management <i class="fa-solid fa-user-graduate f-right"></i></h2>
+                                    <p class="m-b-0">Click to manage students </p>
+                                </div>
+                            </div>
+                        </div>
+                       </a>
+
+
+                        <a th:href="@{/admin/course/dashboard}">
+                        <div class="col-md-4 col-xl-3">
+                            <div class="card bg-c-yellow order-card">
+                                <div class="card-block">
+                                    <h2 class="m-b-15" th:text="${courseCount}">0</h2>
+                                    <h2 class="m-b-15" > Courses Management <i class="fa-solid fa-book"></i></h2>
+                                    <p class="m-b-0">Click to manage courses</p>
+                                </div>
+                            </div>
+                        </div>
+                        </a>
+
+                        <a th:href="@{/admin/assignTeacherToCourse}">
+                            <div class="col-md-4 col-xl-3">
+                                <div class="card bg-c-orange order-card">
+                                    <div class="card-block">
+                                        <h2> <i class="fa-solid fa-book"></i> <i class="fa-solid fa-person-chalkboard f-right"></i></h2>
+                                        <h2 class="m-b-15" > Assign Teacher To Course  <i class="fa-solid fa-user-graduate f-right"></i></h2>
+                                        <p class="m-b-0">Click to assign teacher to course</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+
+                        <a th:href="@{/admin/getMarksheetForm}">
+                            <div class="col-md-4 col-xl-3">
+                                <div class="card bg-c-purple order-card">
+                                    <div class="card-block">
+                                        <h2 class="m-b-15" th:text="${studentCount}">0</h2>
+                                        <h2 class="m-b-15" > Search Student Marksheet <i class="fa-solid fa-user-graduate f-right"></i></h2>
+                                        <p class="m-b-0">Click to see search Student Marksheet</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                <a th:href="@{/admin/promoteAllStudentToNextLevelTerm}">
+                    <div class="col-md-4 col-xl-3">
+                        <div class="card bg-c-purple order-card">
+                            <div class="card-block">
+                                <h2 class="m-b-15" th:text="${studentCount}">0</h2>
+                                <h2 class="m-b-15" > Promote All Student <i class="fa-solid fa-user-graduate f-right"></i></h2>
+                                <p class="m-b-0">Click to promote all department student to their next level term</p>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+
+
+
+
+
+
+                </div>
+             </div>
+
+            </div>
+        </div>
+
+<div th:insert="footer">...</div>
+
+
+<script src="/assets/libs/jquery/dist/jquery.min.js"></script>
+<script src="/assets/libs/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+<script src="/assets/js/sidebarmenu.js"></script>
+<script src="/assets/js/app.min.js"></script>
+<script src="/assets/libs/apexcharts/dist/apexcharts.min.js"></script>
+<script src="/assets/libs/simplebar/dist/simplebar.js"></script>
+<script src="/assets/js/dashboard.js"></script>
+<!-- solar icons -->
+<script src="https://cdn.jsdelivr.net/npm/iconify-icon@1.0.8/dist/iconify-icon.min.js"></script>
+</body>
+
+</html>

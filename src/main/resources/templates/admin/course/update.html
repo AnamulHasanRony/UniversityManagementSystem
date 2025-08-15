@@ -1,0 +1,188 @@
+<!--<div th:replace="~{header :: header}">...</div>-->
+
+<!doctype html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org/">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>University Management System</title>
+    <link rel="shortcut icon" type="image/png" href="/assets/images/logos/logo.png" />
+    <link rel="stylesheet" href="/assets/css/styles.min.css" />
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" integrity="sha512-dTfge/zgoMYpP7QbHy4gWMEGsbsdZeCXz7irItjcC3sPUFtf0kuFbDz/ixG7ArTxmDjLXDmezHubeNikyKGVyQ==" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+          integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A=="
+          crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+    <style>
+
+
+        .inputstl {
+
+             padding: 9px;
+
+             border: solid 1px #460023;
+
+             outline: 0;
+
+             background: -webkit-gradient(linear, left top, left 25, from(#FFFFFF), color-stop(4%, #FFCEE7), to(#FFFFFF));
+
+             background: -moz-linear-gradient(top, #FFFFFF, #FFCEE7 1px, #FFFFFF 25px);
+
+             box-shadow: rgba(0,0,0, 0.1) 0px 0px 8px;
+
+             -moz-box-shadow: rgba(0,0,0, 0.1) 0px 0px 8px;
+
+             -webkit-box-shadow: rgba(0,0,0, 0.1) 0px 0px 8px;
+
+
+
+             }
+
+    </style>
+
+</head>
+
+<body>
+
+
+
+
+<!--  Body Wrapper -->
+<div class="page-wrapper" id="main-wrapper" data-layout="vertical" data-navbarbg="skin6" data-sidebartype="full"
+     data-sidebar-position="fixed" data-header-position="fixed">
+
+
+
+
+    <div th:insert="header">...</div>
+
+
+    <!--  Sidebar End -->
+    <!--  Main wrapper -->
+    <div class="body-wrapper">
+        <div class="body-wrapper-inner">
+            <div class="container-fluid">
+                <!--  Row 1 -->
+                <a class="btn btn-primary" th:href="@{/admin/course/dashboard}" role="button">Back</a>
+
+
+
+
+
+
+
+
+
+
+
+
+
+                <div class="container">
+
+                    <h1 class="text-center">Update Course Info</h1>
+
+                    <ul>
+                        <li class="alert alert-danger" role="alert" th:if="${!#strings.isEmpty(errorMessage)}"
+                            th:text="${errorMessage}"> </li>
+                        <li class="alert alert-success" role="alert" th:if="${!#strings.isEmpty(successMessage)}"
+                            th:text="${successMessage}"> </li>
+                    </ul>
+                    <form th:action="@{/admin/course/update}"  method="post" class="form-horizontal" role="form">
+
+                        <div class="form-group">
+                            <label for="name1" class="col-sm-2 control-label">Course Name:</label>
+                            <div class="col-sm-4">
+                                <input type="text"  class="form-control inputstl"  id="name1"  placeholder="Enter Course Name" name="courseName">
+                            </div>
+                        </div>
+
+
+                        <div class="form-group">
+                            <label for="id" class="col-sm-2 control-label">Course Code:</label>
+                            <div class="col-sm-4">
+                                <input type="text" class="form-control inputstl" id="id"  placeholder="Enter Course Code" name="courseCode">
+                            </div>
+                        </div>
+
+
+                        <div class="form-group">
+                            <label for="credit" class="col-sm-2 control-label">Credit:</label>
+                            <div class="col-sm-2">
+                                <select class="form-control inputstl" id="credit" name="courseCredit">
+                                    <option value="0.75">0.75</option>
+                                    <option value="1">1.00</option>
+                                    <option value="1.50">1.50</option>
+                                    <option value="2.00">2.00</option>
+                                    <option value="3.00">3.00</option>
+                                    <option value="4.00">4</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="teacherRemains" class="col-sm-2 control-label">Select Teacher Mode:</label>
+                            <div class="col-sm-2">
+                                <select class="form-control inputstl" id="teacherRemains" name="teacherRemains">
+                                    <option value="0">Delete Previous Teachers</option>
+                                    <option value="1">Continue With Current Teachers</option>
+
+                                </select>
+                            </div>
+                        </div>
+
+
+
+
+
+
+
+
+
+
+
+
+                        <div class="form-group">
+                            <div class="col-sm-offset-2 col-sm-4">
+                                <button type="submit" class="btn btn-lg btn-block btn-danger">Update Course Details</button>
+                            </div>
+                        </div>
+
+                    </form>
+
+                </div>
+
+
+
+
+                <!--   row 1-->
+
+                <!-- footer start -->
+
+
+
+
+                <!-- footer end -->
+
+            </div>
+        </div>
+    </div>
+</div>
+
+<div th:insert="footer">...</div>
+
+<script src="/assets/libs/jquery/dist/jquery.min.js"></script>
+<script src="/assets/libs/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+<script src="/assets/js/sidebarmenu.js"></script>
+<script src="/assets/js/app.min.js"></script>
+<script src="/assets/libs/apexcharts/dist/apexcharts.min.js"></script>
+<script src="/assets/libs/simplebar/dist/simplebar.js"></script>
+<script src="/assets/js/dashboard.js"></script>
+<!-- solar icons -->
+<script src="https://cdn.jsdelivr.net/npm/iconify-icon@1.0.8/dist/iconify-icon.min.js"></script>
+</body>
+
+</html>

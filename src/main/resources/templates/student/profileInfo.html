@@ -1,0 +1,211 @@
+<!--<div th:replace="~{header :: header}">...</div>-->
+
+<!doctype html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org/">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>University Management System</title>
+    <link rel="shortcut icon" type="image/png" href="/assets/images/logos/logo.png" />
+    <link rel="stylesheet" href="/assets/css/styles.min.css" />
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" integrity="sha512-dTfge/zgoMYpP7QbHy4gWMEGsbsdZeCXz7irItjcC3sPUFtf0kuFbDz/ixG7ArTxmDjLXDmezHubeNikyKGVyQ==" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+          integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A=="
+          crossorigin="anonymous" referrerpolicy="no-referrer" />
+<!--    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-LN+7fdVzj6u52u30Kp6M/trliBMCMKTyK833zpbD+pXdCLuTusPj697FH4R/5mcr" crossorigin="anonymous">-->
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+    <style>
+
+
+        .inputstl {
+
+             padding: 9px;
+
+             border: solid 1px #460023;
+
+             outline: 0;
+
+             background: -webkit-gradient(linear, left top, left 25, from(#FFFFFF), color-stop(4%, #FFCEE7), to(#FFFFFF));
+
+             background: -moz-linear-gradient(top, #FFFFFF, #FFCEE7 1px, #FFFFFF 25px);
+
+             box-shadow: rgba(0,0,0, 0.1) 0px 0px 8px;
+
+             -moz-box-shadow: rgba(0,0,0, 0.1) 0px 0px 8px;
+
+             -webkit-box-shadow: rgba(0,0,0, 0.1) 0px 0px 8px;
+
+
+
+             }
+
+    <!--    html,-->
+    <!--body,-->
+    <!--.intro {-->
+    <!--  height: 100%;-->
+    <!--}-->
+
+    .gradient-custom-2 {
+      /* fallback for old browsers */
+    <!--  background: #6a11cb;-->
+
+      /* Chrome 10-25, Safari 5.1-6 */
+    <!--  background: -webkit-linear-gradient(to top, rgba(106, 17, 203, 1), rgba(37, 117, 252, 1));-->
+
+      /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    <!--  background: linear-gradient(to top, rgba(106, 17, 203, 1), rgba(37, 117, 252, 1))-->
+    }
+
+    table td,
+    table th {
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      overflow: hidden;
+    }
+
+
+        html,
+    body,
+    .intro {
+      height: 100%;
+    }
+
+    table td,
+    table th {
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      overflow: hidden;
+    }
+
+    thead th {
+      color: #fff;
+    }
+
+    .card {
+      border-radius: .5rem;
+    }
+
+    .table-scroll {
+      border-radius: .5rem;
+    }
+
+    .table-scroll table thead th {
+      font-size: 1.25rem;
+    }
+    thead {
+      top: 0;
+      position: sticky;
+    }
+        
+    </style>
+
+</head>
+
+<body>
+
+
+
+
+<!--  Body Wrapper -->
+<div class="page-wrapper" id="main-wrapper" data-layout="vertical" data-navbarbg="skin6" data-sidebartype="full"
+     data-sidebar-position="fixed" data-header-position="fixed">
+
+
+
+
+    <div th:insert="student/header">...</div>
+
+
+    <!--  Sidebar End -->
+    <!--  Main wrapper -->
+    <div class="body-wrapper">
+        <div class="body-wrapper-inner">
+            <div class="container-fluid">
+                <!--  Row 1 -->
+
+                <a class="btn btn-primary" th:href="@{/student/dashboard}" role="button">Back</a>
+                <section class="intro" th:object="${student}">
+
+                    <!-- table for student details -->
+                    <!-- Student Details Heading -->
+                    <h2 class="mb-3 text-center"><b>Student Details</b></h2>
+                    <table class="table table-bordered">
+                        <tr>
+                            <th>Student ID</th>
+                            <td th:text="${student.id}"></td>
+                        </tr>
+                        <tr>
+                            <th>Name</th>
+                            <td th:text="${student.name}"></td>
+                        </tr>
+                        <tr>
+                            <th>Department</th>
+                            <td th:text="${student.department.name}"></td>
+                        </tr>
+                        <tr>
+                            <th>Level</th>
+                            <td th:text="${student.level}"></td>
+                        </tr>
+                        <tr>
+                            <th>Term</th>
+                            <td th:text="${student.term}"></td>
+                        </tr>
+                    </table>
+
+
+                    <!-- end of table for student details -->
+
+                </section>
+
+
+                <!-- Button trigger modal -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                <!--   row 1-->
+
+                <!-- footer start -->
+
+
+
+
+                <!-- footer end -->
+
+            </div>
+        </div>
+    </div>
+</div>
+
+<div th:insert="student/footer">...</div>
+
+<script src="/assets/libs/jquery/dist/jquery.min.js"></script>
+<script src="/assets/libs/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+<script src="/assets/js/sidebarmenu.js"></script>
+<script src="/assets/js/app.min.js"></script>
+<script src="/assets/libs/apexcharts/dist/apexcharts.min.js"></script>
+<script src="/assets/libs/simplebar/dist/simplebar.js"></script>
+<script src="/assets/js/dashboard.js"></script>
+<!--<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js" integrity="sha384-ndDqU0Gzau9qJ1lfW4pNLlhNTkCfHzAVBReH9diLvGRem5+R9g2FzA8ZGN954O5Q" crossorigin="anonymous"></script>-->
+<!-- solar icons -->
+<script src="https://cdn.jsdelivr.net/npm/iconify-icon@1.0.8/dist/iconify-icon.min.js"></script>
+</body>
+
+</html>
