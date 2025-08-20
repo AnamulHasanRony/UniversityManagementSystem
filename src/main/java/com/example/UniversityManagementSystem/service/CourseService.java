@@ -52,7 +52,7 @@ public class CourseService {
     }
 
     public Page<Course> findCoursesListWithPagination(Integer currentPage) {
-            int pageSize=1;
+            int pageSize=10;
             Pageable pageable= PageRequest.of(currentPage-1, pageSize, Sort.by("code").ascending());
             Page<Course> coursesPage= courseRepository.findAll(pageable);
             return coursesPage;
